@@ -18,12 +18,16 @@ class my_driver extends uvm_driver#(my_transaction);
 	
 	// run phase
 	task run_phase(uvm_phase phase);
+		my_transaction trans = new();
 		forever begin
+			seq_item_port.get_next_item(trans);
 			@(posedge vinf.clk) begin
-				vinf.enable <= $random;
-				vinf.a <= $random;
-				vinf.b <= $random;
+				vinf.enable <= trans.enable;
+				vinf.a <= trans.a;
+				vinf.b <= trans.b;
 				//`uvm_info("", $sformatf("driver: enable=%0d, a=%0d, b=%0d", vinf.enable, vinf.a, vinf.b), UVM_MEDIUM)
+			seq_item_port.item_done();
+
 			end
 		end
 	endtask
