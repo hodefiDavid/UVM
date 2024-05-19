@@ -24,7 +24,7 @@ class random_test extends uvm_test;
 		seq = my_sequence::type_id::create("seq");
 		if (!seq.randomize())
 			`uvm_error("", "randomize failed")
-		seq.start(e_env.agnt.seqr);
+		seq.start(e_env.agnt_in.seqr);
 		#4ns;
 		`uvm_info("", "This is a random test running", UVM_MEDIUM)
 		phase.drop_objection(this);
