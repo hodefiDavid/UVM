@@ -1,0 +1,36 @@
+Counter DUT Specification Sheet
+1. DUT Name: Counter
+
+2. Description:
+
+This document specifies the functional interface of a counter DUT (Design Under Test). The DUT implements an 8-bit counter with reset and load functionalities.
+
+3. Ports:
+
+Port Name	    Description	                            Data Type	Direction
+i_inf.clk	    Clock signal	                            bit	        Input
+i_inf.rst	    Reset signal (active low)	                bit	        Input
+i_inf.load	    Load enable signal	                        bit         Input
+i_inf.data_in	Data to be loaded (when load is enabled)	bit [7:0]   Input
+i_inf.count	    Counter output (current count value)	    bit [7:0]	Output
+
+
+4. Functional Behavior:
+
+Clock (i_inf.clk): The counter increments or loads on the positive edge of the clock when enabled.
+Reset (i_inf.rst): An active low reset signal initializes the counter to 0 on the negative edge.
+Load (i_inf.load): When asserted high along with a valid data value on i_inf.data_in, the counter is loaded with the provided data on the positive edge of the clock.
+Count Output (i_inf.count): This output represents the current count value of the counter, ranging from 0 to 255 (due to 8-bit width).
+5. Assumptions and Restrictions:
+
+The counter operates on the positive edge of the clock.
+The reset and load operations are not synchronized with the clock. It's assumed that these signals don't glitch or change too rapidly to cause unintended behavior.
+The counter does not perform any overflow or underflow detection.
+6. Additional Notes:
+
+This specification sheet focuses on the functional interface. The internal implementation details of the counter are not included.
+Users of this DUT should ensure that the reset and load signals are used appropriately to avoid unexpected behavior.
+This spec sheet provides a clear description of the counter DUT's functionality, 
+ports, and limitations. It can be used for test case development, 
+integration with other verification components, 
+and communication between design and verification teams.
