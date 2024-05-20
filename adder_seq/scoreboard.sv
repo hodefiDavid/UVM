@@ -40,7 +40,10 @@ class scoreboard extends uvm_scoreboard;
                 `uvm_info("compare", {"test: OK!"}, UVM_LOW)
             end
             else begin
-                `uvm_info("compare", {"test: Fail!"}, UVM_MEDIUM)
+                //add a message to the report if the test fails
+                // using the uvm error macro
+                `uvm_warning("compare", {"test: Fail!"})
+                //`uvm_info("compare", {"test: Fail!"}, UVM_MEDIUM)
             end
         end
     endtask

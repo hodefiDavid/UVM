@@ -11,8 +11,9 @@ class monitor_in extends uvm_monitor;
     my_transaction my_tran_cov;
     //Define coverpoints
     covergroup adder_cov;
-        coverpoint my_tran_cov.a;
-        coverpoint my_tran_cov.b;
+        cov_a: coverpoint my_tran_cov.a;
+        cov_b: coverpoint my_tran_cov.b;
+        cov_ab: cross cov_a, cov_b;
     endgroup
 
     function new(string name, uvm_component parent);
@@ -42,8 +43,9 @@ class monitor_in extends uvm_monitor;
                 // for coverage
                 my_tran_cov = my_tran;
                 adder_cov.sample();
-                `uvm_info(" ", $sformatf("Monitor expected enable=%0d, a=%0d, b=%0d, sum=%d", vinf.enable,vinf.a, vinf.b, vinf.sum), UVM_MEDIUM);
+                //`uvm_info(" ", $sformatf("Monitor expected enable=%0d, a=%0d, b=%0d, sum=%d", vinf.enable,vinf.a, vinf.b, vinf.sum), UVM_MEDIUM);
                 //send the transaction to the analysis port
+                @(posedge vinf.clk);
                 mon_in_ap.write(my_tran);
             end
         end

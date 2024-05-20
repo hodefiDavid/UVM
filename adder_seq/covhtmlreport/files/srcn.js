@@ -1,0 +1,2 @@
+var g_data = ["","interface.sv","my_pkg.svh","verilog_src/uvm-1.1d/src/base/uvm_registry.svh","verilog_src/uvm-1.1d/src/comps/uvm_driver.svh","my_driver.sv","monitor_in.sv","my_transaction.sv","my_sequencer.sv","my_sequence.sv","monitor_out.sv","my_agent.sv","my_agent_out.sv","scoreboard.sv","env.sv","random_test.sv","top.sv","adder.sv"];
+processSrcNamesData(g_data);

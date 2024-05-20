@@ -1,0 +1,2 @@
+var g_data = {"8":{"st":"inst","pa":0,"n":"/my_pkg","l":"SystemVerilog","sn":2,"du":{"n":"work.my_pkg","s":2,"b":1},"bc":[{"n":"my_pkg","s":8,"z":1}],"loc":{"cp":79.81,"data":{"gb":[288,133],"cvpc":[3],"g":[1,79.81]}}},"2":{"st":"du","pa":0,"n":"work.my_pkg","l":"SystemVerilog","sn":2,"one_inst":8,"loc":{"cp":79.81,"data":{"gb":[288,133],"cvpc":[3],"g":[1,79.81]}}}};
+processSummaryData(g_data);

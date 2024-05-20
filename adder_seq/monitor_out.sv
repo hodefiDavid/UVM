@@ -27,8 +27,34 @@ class monitor_out extends uvm_monitor;
             forever begin
                 // fork the process to wait for the enable signal
                 @(posedge vinf.clk);
-                // fork
+                fork
                     // wait for the enable signal
+                        if(vinf.enable) begin
+                            @(posedge vinf.clk);
+                            my_tran.sum = vinf.sum;
+                            mon_out_ap.write(my_tran);
+                            this.old_sum = vinf.sum;
+                        end
+                        else begin
+                         //if the sum signal changes, send the transaction to the analysis port
+                        // 2ps delay to make sure the sum signal is stable and we are not sending the same transaction twice 
+                        #2ps;
+                        
+                        if(vinf.sum != this.old_sum) begin
+                        my_tran.sum = vinf.sum;
+                        mon_out_ap.write(my_tran);
+                        this.old_sum = vinf.sum;
+                    end
+                end
+                join_none;
+            end 
+    endtask
+
+endclass
+
+
+            // fork
+            // wait for the enable signal
             //         begin
             //             if(vinf.enable) begin
             //                 @(posedge vinf.clk);
@@ -42,25 +68,6 @@ class monitor_out extends uvm_monitor;
             //             my_tran.sum = vinf.sum;
             //             mon_out_ap.write(my_tran);
             //         end
-            //     join_any
-            //     disable fork;
+            // join_any
+            // disable fork;
             // 
-                        
-                fork
-                    // wait for the enable signal
-                        if(vinf.enable) begin
-                            @(posedge vinf.clk);
-                            my_tran.sum = vinf.sum;
-                            mon_out_ap.write(my_tran);
-                            this.old_sum = vinf.sum;
-                        end
-                        else if(vinf.sum != this.old_sum) begin
-                        my_tran.sum = vinf.sum;
-                        mon_out_ap.write(my_tran);
-                        this.old_sum = vinf.sum;
-                    end
-                join_none;
-            end
-    endtask
-
-endclass
