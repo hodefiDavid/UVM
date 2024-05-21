@@ -11,7 +11,7 @@ module top;
 	
 	initial begin
 		rst = 1;
-		#20 rst = 0;
+		#5 rst = 0;
 	end
 	
 	// instantiate interface

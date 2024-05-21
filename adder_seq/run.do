@@ -13,4 +13,4 @@ vsim opt_test
 add wave -position insertpoint sim:/top/i_inf/*
 
 # run the simulation
-run -all
+run 0
