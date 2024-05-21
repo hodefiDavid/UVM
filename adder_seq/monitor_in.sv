@@ -4,7 +4,7 @@ class monitor_in extends uvm_monitor;
     uvm_analysis_port# (my_transaction) mon_in_ap; // monitor analysis port
 
     virtual inf vinf;
-
+    int sum_of_trans_in = 0;
     my_transaction my_tran;
 
     //For coverage
@@ -36,7 +36,9 @@ class monitor_in extends uvm_monitor;
             // wait(vinf.enable);
             // @(posedge vinf.clk);
             @(posedge vinf.clk);
-            if(vinf.enable)
+
+              #2ps;
+            if(vinf.enable && ~vinf.rst)
              begin 
                 my_tran.a = vinf.a;
                 my_tran.b = vinf.b;
@@ -45,8 +47,9 @@ class monitor_in extends uvm_monitor;
                 adder_cov.sample();
                 //`uvm_info(" ", $sformatf("Monitor expected enable=%0d, a=%0d, b=%0d, sum=%d", vinf.enable,vinf.a, vinf.b, vinf.sum), UVM_MEDIUM);
                 //send the transaction to the analysis port
-                @(posedge vinf.clk);
+                // @(posedge vinf.clk);
                 mon_in_ap.write(my_tran);
+                sum_of_trans_in++;
             end
         end
     endtask

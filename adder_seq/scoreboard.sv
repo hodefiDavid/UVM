@@ -31,10 +31,14 @@ class scoreboard extends uvm_scoreboard;
     endfunction
 
     task run();
+            fifo_out.get(trans_out);
+            fifo_out.get(trans_out);
+
         forever begin
             fifo_in.get(trans_in);
             fifo_out.get(trans_out);
-
+            `uvm_info("", {"comparing transactions"}, UVM_LOW)
+            `uvm_info("", $sformatf("trans_out.sum %0d, trans_in.a %0d, trans_in.b %0d",trans_out.sum,trans_in.a,trans_in.b), UVM_LOW)
             //compare the transactions
             if (trans_out.sum == trans_in.a + trans_in.b) begin
                 `uvm_info("compare", {"test: OK!"}, UVM_LOW)

@@ -28,6 +28,11 @@ class random_test extends uvm_test;
 		#4ns;
 		`uvm_info("", "This is a random test running", UVM_MEDIUM)
 		phase.drop_objection(this);
+
+		// wait for the simulation to finish
+		`uvm_info("", $sformatf("number of trans in %0d", e_env.agnt_in.mon_in_h.sum_of_trans_in), UVM_MEDIUM)
+		`uvm_info("", $sformatf("number of trans out %0d",  e_env.agnt_out.mon_out_h.sum_of_trans_out), UVM_MEDIUM)
+
 	endtask
 
 endclass
