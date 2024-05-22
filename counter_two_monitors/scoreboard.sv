@@ -93,27 +93,8 @@ class scoreboard extends uvm_scoreboard;
     task print_ignore();
         `uvm_info("", {"test: Ignore!"}, UVM_LOW)
     endtask
-    
-    // task run();
-    //         fifo_out.get(trans_out);
-    //         fifo_out.get(trans_out);
 
-    //     forever begin
-    //         fifo_in.get(trans_in);
-    //         fifo_out.get(trans_out);
-    //         `uvm_info("", {"comparing transactions"}, UVM_LOW)
-    //         `uvm_info("", $sformatf("trans_out.sum %0d, trans_in.a %0d, trans_in.b %0d",trans_out.sum,trans_in.a,trans_in.b), UVM_LOW)
-    //         //compare the transactions
-    //         if (trans_out.sum == trans_in.a + trans_in.b) begin
-    //             `uvm_info("compare", {"test: OK!"}, UVM_LOW)
-    //         end
-    //         else begin
-    //             //add a message to the report if the test fails
-    //             // using the uvm error macro
-    //             `uvm_warning("compare", {"test: Fail!"})
-    //             //`uvm_info("compare", {"test: Fail!"}, UVM_MEDIUM)
-    //         end
-    //     end
-    // endtask
 
-endclass
+   endclass 
+   
+
