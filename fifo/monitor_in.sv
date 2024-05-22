@@ -29,6 +29,8 @@ class monitor_in extends uvm_monitor;
                 my_tran.write_en = vinf.write_en;
                 my_tran.read_en = vinf.read_en;
                 my_tran.data_in = vinf.data_in;
+                my_tran.rst = vinf.rst;
+                
                 mon_in_ap.write(my_tran);
                 sum_of_trans_in++;
             end
