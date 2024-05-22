@@ -22,7 +22,7 @@ class my_driver extends uvm_driver#(my_transaction);
 		forever begin
 			seq_item_port.get_next_item(trans);
 			@(posedge vinf.clk) begin				
-				vinf.rst <= trans.rst;
+				// vinf.rst <= trans.rst;
 				vinf.write_en <= trans.write_en;
 				vinf.read_en <= trans.read_en;
 				vinf.data_in <= trans.data_in;

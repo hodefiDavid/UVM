@@ -29,7 +29,7 @@ class monitor_out extends uvm_monitor;
                 fork
                     // wait for the enable signal
                     begin
-                        #3ns;//wait for 3ns to make sure the signal is stable
+                        #2ps;//wait for 3ns to make sure the signal is stable
                         if(vinf.write_en == 1'b1 || vinf.read_en == 1'b1 || vinf.rst == 1'b1) begin
                             next_is_valid = 1;
                         end
@@ -54,32 +54,3 @@ class monitor_out extends uvm_monitor;
     endtask
 
 endclass
-
-
-            // fork
-            // wait for the enable signal
-            //         begin
-            //             if(vinf.enable) begin
-            //                 @(posedge vinf.clk);
-            //                 my_tran.sum = vinf.sum;
-            //                 mon_out_ap.write(my_tran);
-            //             end
-            //         end
-            //         // wait for the sum signal
-            //         begin
-            //             wait(vinf.sum);
-            //             my_tran.sum = vinf.sum;
-            //             mon_out_ap.write(my_tran);
-            //         end
-            // join_any
-            // disable fork;
-            // 
-
-                           //     begin 
-                //         #2ns;  
-                //         if(vinf.sum != this.old_sum) begin
-                //         my_tran.sum = vinf.sum;
-                //         mon_out_ap.write(my_tran);
-                //         this.old_sum = vinf.sum;
-                //     end
-                // end

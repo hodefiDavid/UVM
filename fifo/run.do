@@ -1,7 +1,7 @@
 # clean the previous compiled files and quit previous simulation
 .main clear
 # recompile the files
-vlog fifo.v my_pkg.svh interface.sv top.sv
+vlog fifo.sv my_pkg.svh interface.sv top.sv
 
 # start the simulation
 vopt +acc top -o opt_test
@@ -13,4 +13,4 @@ vsim opt_test
 add wave -position insertpoint sim:/top/i_inf/*
 
 # run the simulation
-run -all
+run 0

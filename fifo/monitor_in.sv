@@ -23,7 +23,7 @@ class monitor_in extends uvm_monitor;
         forever begin 
    
             @(posedge vinf.clk);
-              #2ps;
+               #1ps;
             if(vinf.write_en == 1'b1 || vinf.read_en == 1'b1 || vinf.rst == 1'b1)
              begin 
                 my_tran.write_en = vinf.write_en;

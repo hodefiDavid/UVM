@@ -1,7 +1,8 @@
 // top module test bench - import package (header.sv)
 `include "interface.sv"
+`include "fifo.sv"
 module top;
-
+	
 	import uvm_pkg::*;
 	import my_pkg::*;
 	
@@ -16,8 +17,8 @@ module top;
 	
 	// instantiate interface
 	inf i_inf(clk, rst);
-	fifo a1(i_inf);
-	
+	// fifo a1(i_inf);
+	fifo c1(i_inf);
 	// run the test (random_test.sv)
 	initial begin
 		// set the virtual interface to the config_db

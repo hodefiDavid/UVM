@@ -36,7 +36,7 @@ The fifo queue size is 16; //2 ** AWIDTH
 
 ### Functional Description
 
-- **Rese Behavior**: On a reset (`rst`)  full = 0, empty =1
+- **Resewri Behavior**: On a reset (`rst`)  full = 0, empty =1
 
 - **Write Operation**: When `write_en` is asserted and the FIFO is not full, the data from `data_in` is written to the memory.
 
