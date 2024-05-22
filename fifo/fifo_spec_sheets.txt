@@ -1,0 +1,74 @@
+Here's a specification sheet for the given FIFO (First-In, First-Out) buffer module written in Verilog:
+
+---
+
+## FIFO Specification Sheet
+
+### Module Overview
+
+The `fifo` module is a parameterized FIFO buffer, which allows for temporary storage and retrieval of data in a first-in, first-out manner. The module is parameterizable in terms of address width (`AWIDTH`) and data width (`DWIDTH`).
+
+### Parameter Declarations
+
+- **AWIDTH**: Address width (default value: 4)
+- **DWIDTH**: Data width (default value: 4)
+
+The fifo queue size is 16; //2 ** AWIDTH
+
+### Port Declarations
+
+- **Inputs**:
+  - `clk`: Clock signal.
+  - `rst`: Reset signal (active high).
+  - `write_en`: Write enable signal (active high).
+  - `read_en`: Read enable signal (active high).
+  - `data_in`: Data input bus of width `DWIDTH`.
+
+- **Outputs**:
+  - `full`: Full flag, indicates if the FIFO is full (active high).
+  - `empty`: Empty flag, indicates if the FIFO is empty (active high).
+  - `data_out`: Data output bus of width `DWIDTH`, registered output.
+
+### Internal Variable Declarations
+
+- **Local Parameters**:
+  - `DEPTH`: Depth of the FIFO memory, calculated as `2^AWIDTH`.
+
+### Functional Description
+
+- **Reset Behavior**: On a reset (`rst`)  full = 0, empty =1
+
+- **Write Operation**: When `write_en` is asserted and the FIFO is not full, the data from `data_in` is written to the memory.
+
+- **Read Operation**: When `read_en` is asserted and the FIFO is not empty, pop the first data;
+
+- **Empty Flag (`empty`)**: as described above
+
+- **Full Flag (`full`)**: as described above
+
+### Timing Diagram Example
+
+Below is an example timing diagram demonstrating typical read and write operations with a FIFO:
+
+```
+clk        : |‾‾‾|__|‾‾‾|__|‾‾‾|__|‾‾‾|__|‾‾‾|__|‾‾‾|__|
+rst        : |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|________|
+write_en   : |____|‾‾‾‾‾‾‾‾‾‾‾|______________________|‾‾‾‾‾‾‾‾‾‾‾‾|
+read_en    : |________________|‾‾‾‾‾‾‾‾‾‾‾‾|_____________________|
+data_in    : |____|  A  |____|  B  |____|  C  |____|  D  |____|  E  |
+data_out   : |____|_____|____|  A  |____|  B  |____|  C  |____|____|
+empty      : |‾‾‾|___________|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|______________|‾‾‾|
+full       : |____|___________|_____________________|_________|____|
+```
+
+In this example:
+- Data `A` is written to the FIFO when `write_en` is high.
+- Data `A` is read from the FIFO when `read_en` is high.
+- The `empty` flag is high initially and becomes low after the first write.
+- The `full` flag becomes high when the FIFO is full and resets when data is read.
+
+### Important Notes
+
+- The FIFO does not handle simultaneous read and write operations. The logic should be designed to avoid asserting both `read_en` and `write_en` at the same time, unless additional handling is implemented.
+
+This specification sheet should provide a clear overview of the FIFO module's functionality, parameters, and typical usage within a digital system.
