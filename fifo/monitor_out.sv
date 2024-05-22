@@ -29,7 +29,7 @@ class monitor_out extends uvm_monitor;
                 fork
                     // wait for the enable signal
                     begin
-                        #3ns;
+                        #3ns;//wait for 3ns to make sure the signal is stable
                         if(vinf.write_en == 1'b1 || vinf.read_en == 1'b1 || vinf.rst == 1'b1) begin
                             next_is_valid = 1;
                         end
