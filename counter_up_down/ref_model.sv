@@ -20,7 +20,9 @@ class ref_model;
             count = count - 1;
         end
         tr_in.count = count;
+        
         return tr_in;
+        
     endfunction
 endclass
 

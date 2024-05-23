@@ -42,6 +42,9 @@ class scoreboard extends uvm_scoreboard;
     endfunction
 
     virtual function void write_port_out(my_transaction trans_out);
+    // if(my_fifo.size() == 0) begin
+    //wait for the first transaction fifo
+
         compare(trans_out, my_fifo.pop_front());
     endfunction
 

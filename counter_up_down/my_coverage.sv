@@ -12,7 +12,10 @@ class my_coverage;
         }
         load_cp : coverpoint my_trans.load;
 
-        rst_cp : coverpoint my_trans.rst;
+        rst_cp : coverpoint my_trans.rst {
+            // bins rst = {1};
+            bins no_rst = {0};
+        }
 
         count_cp : coverpoint my_trans.count {
             bins c0 = {0};
