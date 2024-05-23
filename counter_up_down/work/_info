@@ -4,6 +4,7 @@ z2
 Z0 !s99 nomlopt
 R0
 R0
+R0
 !s11f MIXED_VERSIONS
 13
 !s112 1.1
@@ -15,7 +16,7 @@ Z1 dC:/Users/david/Documents/system_verilog_projects/UVM/UVM/counter_up_down
 vcounter_up_down
 Z2 2counter_up_down.sv|my_pkg.svh|interface.sv|top.sv
 Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1716451868
+Z4 !s110 1716462775
 !i10b 1
 !s100 djIM1Z>E91?nebL0BR^Z;3
 Im;P2HjRHUS_UUdS:Wee5A3
@@ -24,15 +25,15 @@ R1
 w1716448683
 8counter_up_down.sv
 Fcounter_up_down.sv
-!i122 9
+!i122 13
 L0 1 19
 Z5 VDg1SIo80bB@j0V0VzS_@n1
 Z6 OL;L;2023.4;77
 r1
 !s85 0
 31
-Z7 !s108 1716451868.000000
-Z8 !s107 random_test.sv|env.sv|ref_model.sv|scoreboard.sv|my_agent_out.sv|my_agent.sv|my_driver.sv|monitor_out.sv|monitor_in.sv|my_sequence.sv|my_sequencer.sv|my_transaction.sv|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|top.sv|interface.sv|my_pkg.svh|counter_up_down.sv|
+Z7 !s108 1716462775.000000
+Z8 !s107 random_test.sv|env.sv|ref_model.sv|scoreboard.sv|my_agent_out.sv|my_agent.sv|my_driver.sv|monitor_out.sv|my_coverage.sv|monitor_in.sv|my_sequence.sv|my_sequencer.sv|my_transaction.sv|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|top.sv|interface.sv|my_pkg.svh|counter_up_down.sv|
 Z9 !s90 -reportprogress|300|counter_up_down.sv|my_pkg.svh|interface.sv|top.sv|
 !i113 0
 Z10 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
@@ -49,7 +50,7 @@ R1
 w1716448567
 8interface.sv
 Finterface.sv
-!i122 9
+!i122 13
 L0 1 0
 R5
 R6
@@ -70,11 +71,11 @@ R3
 Z12 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
 R4
 !i10b 1
-!s100 XOL1G`BcVfk3:7WaWOAFX2
-ImEFARM>NR_R[Q@Y7BYTVT1
+!s100 YXW`EjTP5X:1l]GJDT89e3
+InD0mPV4B=akSL9^fZb[bQ1
 S1
 R1
-w1716451810
+w1716462773
 8my_pkg.svh
 Fmy_pkg.svh
 FC:/questasim64_2023.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
@@ -93,6 +94,7 @@ Fmy_transaction.sv
 Fmy_sequencer.sv
 Fmy_sequence.sv
 Fmonitor_in.sv
+Fmy_coverage.sv
 Fmonitor_out.sv
 Fmy_driver.sv
 Fmy_agent.sv
@@ -101,9 +103,9 @@ Fscoreboard.sv
 Fref_model.sv
 Fenv.sv
 Frandom_test.sv
-!i122 9
+!i122 13
 L0 2 0
-VmEFARM>NR_R[Q@Y7BYTVT1
+VnD0mPV4B=akSL9^fZb[bQ1
 R6
 r1
 !s85 0
@@ -117,8 +119,8 @@ R11
 Topt_test
 !s11d my_pkg C:/Users/david/Documents/system_verilog_projects/UVM/UVM/counter_up_down/work 1 inf 1 C:/Users/david/Documents/system_verilog_projects/UVM/UVM/counter_up_down/work 
 !s11d uvm_pkg C:/questasim64_2023.4/uvm-1.1d 1 inf 1 C:/Users/david/Documents/system_verilog_projects/UVM/UVM/counter_up_down/work 
-!s110 1716451869
-VB2?GUEob?N^C?6S4Y:6<c1
+!s110 1716462776
+Vb<H9^@TXM9^AAIjeio9cK0
 04 3 4 work top fast 0
 R0
 !s12f OEM100
@@ -132,7 +134,7 @@ vtop
 R2
 R3
 R12
-DXx4 work 6 my_pkg 0 22 mEFARM>NR_R[Q@Y7BYTVT1
+DXx4 work 6 my_pkg 0 22 nD0mPV4B=akSL9^fZb[bQ1
 R4
 !i10b 1
 !s100 E6]MR?E0X5_^JDM]fVJ=W3
@@ -142,7 +144,7 @@ R1
 w1716451735
 8top.sv
 Ftop.sv
-!i122 9
+!i122 13
 L0 3 26
 R5
 R6

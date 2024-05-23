@@ -10,7 +10,7 @@ class my_coverage;
 
 
 covergroup fifo_cov;
-	coverpoint  write_en;
+	write_en:coverpoint  write_en;
     coverpoint  read_en;
     coverpoint  data_in;
     coverpoint  full;
