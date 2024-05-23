@@ -1,6 +1,7 @@
 `uvm_analysis_imp_decl(_port_in)
 `uvm_analysis_imp_decl(_port_out)
 `include "ref_model.sv"
+`include "my_coverage.sv"
 //define enum type for max size of fifo and min size of fifo
 typedef enum {MIN_SIZE = 0, MAX_SIZE = 16} fifo_size_enum;
 
@@ -11,13 +12,13 @@ class scoreboard extends uvm_scoreboard;
 uvm_analysis_imp_port_in#(my_transaction, scoreboard) scb_port_in;
 uvm_analysis_imp_port_out#(my_transaction, scoreboard) scb_port_out;
 
+my_coverage cov;
 ref_model ref_m;
 my_transaction trans_ref;
 my_transaction trans_in;
 my_transaction trans_out;
 int num_of_trans_in = 0;
 int num_of_trans_out = 0;
-// int fifo_size = 0;
 my_transaction my_fifo[$];
 
 function new(string name = "scoreboard", uvm_component parent);
@@ -26,7 +27,7 @@ function new(string name = "scoreboard", uvm_component parent);
     trans_in = new("trans_in");
     trans_out = new("trans_out");
     ref_m = new();
-
+    cov = new();
 endfunction
 
 function void build_phase(uvm_phase phase);
@@ -48,11 +49,17 @@ my_fifo.push_back(trans_ref);
 endfunction
 
 virtual function void write_port_out(my_transaction trans);
-trans_out.full = trans.full;
-trans_out.empty = trans.empty;
-trans_out.data_out = trans.data_out;
+// if fifo is empty then wait for the data to be ready
+if ((my_fifo.size() == 0)) begin
+  wait(my_fifo.size() != 0)
+end
+else begin
+    trans_out.full = trans.full;
+    trans_out.empty = trans.empty;
+    trans_out.data_out = trans.data_out;
 
-compare(trans_out, my_fifo.pop_front());
+    compare(trans_out, my_fifo.pop_front());
+end
 endfunction
 
 virtual function void compare(my_transaction dut_out, my_transaction ref_out);
