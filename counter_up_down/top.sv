@@ -16,7 +16,7 @@ module top;
 	
 	// instantiate interface
 	inf i_inf(clk, rst);
-	counter a1(i_inf);
+	counter_up_down a1(i_inf);
 	
 	// run the test (random_test.sv)
 	initial begin

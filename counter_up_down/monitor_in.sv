@@ -38,7 +38,7 @@ class monitor_in extends uvm_monitor;
             @(posedge vinf.clk);
               #2ps;
              begin 
-                my_tran.enable = vinf.up_down;
+                my_tran.up_down = vinf.up_down;
                 my_tran.load = vinf.load;
                 my_tran.data_in = vinf.data_in;
                 my_tran.rst = vinf.rst;
