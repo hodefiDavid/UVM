@@ -17,8 +17,9 @@ module top;
 	
 	// instantiate interface
 	inf i_inf(clk, rst);
-	// fifo a1(i_inf);
-	memory c1(i_inf);
+	// instantiate memory
+	// connect the interface to the memory by name
+	memory c1(.clk(clk), .rst(rst), .addr(i_inf.addr), .wr_en(i_inf.wr_en), .rd_en(i_inf.rd_en), .wr_data(i_inf.wr_data), .rd_data(i_inf.rd_data));
 	// run the test (random_test.sv)
 	initial begin
 		// set the virtual interface to the config_db

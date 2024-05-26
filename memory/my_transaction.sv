@@ -12,7 +12,7 @@ class my_transaction extends uvm_sequence_item;
     rand bit [DATA_WIDTH-1:0]  wr_data;
     //constraint for write_en and read_en they 
     //should not be high at the same time but both could be low
-    constraint c_write_read { !(wr_en && rd_en); }
+    // constraint c_write_read { !(wr_en && rd_en); }
 
 
     // out put port 
