@@ -1,0 +1,42 @@
+///////////////////////////////////////////////////////////////////////////
+// MODULE               : ALU                                            //
+//                                                                       //
+// DESIGNER             : Dorit Medina                                   //
+//                                                                       //
+// Verilog code for ALU                                                  //
+// This is the behavioral description of an ALU       		         //
+//                                                                       //
+///////////////////////////////////////////////////////////////////////////
+
+module ALU (A, B, mode, clk, rst_n, Y);
+
+output [4:0] Y;
+input  [3:0] A, B;
+input  [1:0] mode;
+input        clk, rst_n;
+
+`pragma protect begin_protected
+`pragma protect version = 1
+`pragma protect encrypt_agent = "QuestaSim" , encrypt_agent_info = "2021.3"
+`pragma protect key_keyowner = "Mentor Graphics Corporation" , key_keyname = "MGC-VERIF-SIM-RSA-2"
+`pragma protect key_method = "rsa"
+`pragma protect encoding = ( enctype = "base64" , line_length = 64 , bytes = 256 )
+`pragma protect key_block
+iaXXRNEhbyVLBrbfwc/6YH9aCqobegqsG3dD12aRiu/Uj7JeyEanr2rVLXzT0x24
+DdjI96qXmTwrSRYRMpU5AQMONA2NCmgaXdup7+KVtuHDzE+jkL89d2D+Aeh9PTI0
+IR5yZAdU79xWaeIAw3NIhOSmxzQ5Hii/tDx/hG2eQMgA/3dOvE9vaeW7q7kLcJKV
+czzVov6k26FE4FvU+xSm3cWk0U5t9dMSUaNju4yfDd8f6IKwEdB+d2uFVAOZEQVC
+kxikabOLTthj4roKLV0KKagXOFg4/qMpqjeVTfg3TDztVOxj/rBDYw4r7TCdKut+
+6k2nB+4mFO7CgcxqbPTxAA==
+`pragma protect data_method = "aes128-cbc"
+`pragma protect encoding = ( enctype = "base64" , line_length = 64 , bytes = 320 )
+`pragma protect data_block
+3g7sQvTIIGHs5i1ad0Fid5PFs9q/PVnByj8Gtb26JnTxvjF6BBUvI3+8Jgdjaztu
+uZiII9R73oYzfPWO3kgR0D8I/aTGsOMU427q19tesGrBef+C4DB2JNKDW8uONsrg
+j08S2HiKCPOc8YYOqDIAa7HU4Yv4h9G1ClXiJRYZ7aMDgA1/NQEb2xbVcNu/SZ7x
+THfFREfSH2wuxYWWObrqs7i/0FINvcbf2bKO+QNY6hRU8duLtn1+FSbilkoTqkr1
+U4kt/rDyvYDnviX/aP9mLH5olIAxSbts/u9YOLJ9Kp4csMfO/qCz7i2A6To2q3JP
+Wg4SCqvrIRLDg283moUF+CFf2iJIoPIMTXu5aEqET/s45TjUbWk0R1tEBgCxQPnj
+9YRXTno6VVL4Mjxq0/dJljjIKwLAYxVwTJ9BpN83epM=
+`pragma protect end_protected
+endmodule

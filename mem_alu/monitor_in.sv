@@ -1,3 +1,5 @@
+	`include "my_coverage.sv"
+
 class monitor_in extends uvm_monitor;
     `uvm_component_utils (monitor_in)
 
@@ -6,9 +8,15 @@ class monitor_in extends uvm_monitor;
     virtual inf vinf;
     int sum_of_trans_in = 0;
     my_transaction my_tran;
+    
+    // for coverage porpeses
+    my_coverage cov;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
+        
+        //for coverage
+        cov = new();
     endfunction
 
     function void build_phase(uvm_phase phase);
@@ -34,6 +42,9 @@ class monitor_in extends uvm_monitor;
                 
                 mon_in_ap.write(my_tran);
                 sum_of_trans_in++;
+                
+                // for coverage
+                cov.coverage_sample(my_tran);
             end
         end
     endtask

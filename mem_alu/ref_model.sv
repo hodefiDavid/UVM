@@ -28,24 +28,8 @@ class ref_model;
             return t_out;
         end
 
-        // write and read the register
-        if(t_in.rd_wr == 0) begin
-            if(t_in.enable == 1) begin
-                if(t_in.addr<2)
-                alu_reg_h.write(t_in.addr, t_in.wr_data);
-                else if (t_in.addr==2)
-                alu_reg_h.write(t_in.addr, t_in.wr_data[2:0]);
-                else if (t_in.addr==3)
-                alu_reg_h.write(t_in.addr, t_in.wr_data[0]);
-            end
-        end
-        else begin
-            if(t_in.enable == 1)
-            alu_reg_h.read(t_in.addr, t_out.rd_data);
-            t_out.is_data_valid = 1;
-        end
-        
         // execute the operation
+        if(t_in.enable == 1)
         if(alu_reg_h.read(EXECUTE))begin
             if(alu_reg_h.read(OPER)==0) begin
                 t_out.res_out=0;
@@ -68,6 +52,25 @@ class ref_model;
                     privious_res_out = t_out.res_out;
                 end
         end
+
+
+        // write and read the register
+        if(t_in.rd_wr == 0) begin
+            if(t_in.enable == 1) begin
+                if(t_in.addr<2)
+                alu_reg_h.write(t_in.addr, t_in.wr_data);
+                else if (t_in.addr==2)
+                alu_reg_h.write(t_in.addr, t_in.wr_data[2:0]);
+                else if (t_in.addr==3)
+                alu_reg_h.write(t_in.addr, t_in.wr_data[0]);
+            end
+        end
+        else begin
+            if(t_in.enable == 1)
+            alu_reg_h.read(t_in.addr, t_out.rd_data);
+            t_out.is_data_valid = 1;
+        end
+        
       return t_out;
     endfunction
 
