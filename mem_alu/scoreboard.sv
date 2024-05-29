@@ -52,28 +52,34 @@ endfunction
 
 function void compare_res(my_transaction dut_out, my_transaction ref_out);
 
-    if(dut_out.res_out != ref_out.res_out)begin
-        `uvm_warning("", "TEST FAILED")
-        print_more_data(dut_out, ref_out);
-    end
+    if(dut_out.res_out != ref_out.res_out)
+        test_failed(dut_out, ref_out);
     else
-        `uvm_info(get_type_name(), "TEST PASSED", UVM_LOW)
+        test_passed(dut_out, ref_out);
     
     if(ref_out.is_data_valid == 1) 
-        if(dut_out.rd_data != ref_out.rd_data)begin
+        if(dut_out.rd_data != ref_out.rd_data)
+            test_failed(dut_out, ref_out);
+        else 
+            test_passed(dut_out, ref_out);
+    endfunction
+
+function void test_passed(my_transaction dut_out, my_transaction ref_out);
+            `uvm_info(get_type_name(), "TEST PASSED", UVM_LOW )
+            print_more_data(dut_out, ref_out);
+endfunction
+
+function void test_failed(my_transaction dut_out, my_transaction ref_out);
             `uvm_warning("", "TEST FAILED")
             print_more_data(dut_out, ref_out);
-        end
-        else
-            `uvm_info(get_type_name(), "TEST PASSED", UVM_LOW)
-    endfunction
+endfunction
 
 function void print_more_data(my_transaction dut_out, my_transaction ref_out);
     $display("DUT OUT: %0d %0d", dut_out.res_out, dut_out.rd_data);
     $display("REF OUT: %0d %0d", ref_out.res_out, ref_out.rd_data);
-    ref_out.print();
-    dut_out.print();
     $display("time: %0t", $time);
+    // ref_out.print();
+    // dut_out.print();
 endfunction
 
 endclass
