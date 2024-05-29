@@ -29,23 +29,23 @@ class monitor_in extends uvm_monitor;
         my_tran = my_transaction::type_id::create("my_tran", this);
   
         forever begin 
-   
-            @(posedge vinf.clk);
-               #1ps;
-            if(vinf.reset == 1 || vinf.enable == 1) 
-             begin 
-                my_tran.reset <= vinf.reset;
-                my_tran.rd_wr <= vinf.rd_wr;
-                my_tran.enable <= vinf.enable;   
-                my_tran.addr <= vinf.addr;
-                my_tran.wr_data <= vinf.wr_data;
-                
-                mon_in_ap.write(my_tran);
-                sum_of_trans_in++;
-                
-                // for coverage
-                cov.coverage_sample(my_tran);
+        
+            @(vinf.rd_wr or vinf.reset or vinf.addr or vinf.wr_data)
+            // for coverage
+            cov.coverage_sample(my_tran);
+
+            begin 
+                if(vinf.enable | vinf.reset) begin
+                    my_tran.reset <= vinf.reset;
+                    my_tran.rd_wr <= vinf.rd_wr;
+                    my_tran.enable <= vinf.enable;   
+                    my_tran.addr <= vinf.addr;
+                    my_tran.wr_data <= vinf.wr_data;
+                    mon_in_ap.write(my_tran);
+                    sum_of_trans_in++;
+                end
             end
         end
+
     endtask
 endclass

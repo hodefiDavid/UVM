@@ -20,37 +20,33 @@ class monitor_out extends uvm_monitor;
     endfunction
 
     task run_phase(uvm_phase phase);
-
-        my_tran = my_transaction::type_id::create("my_tran", this);
+        my_transaction tr_data = new();
+        my_transaction tr_res = new();
+        
         next_is_valid = 0;
 
             forever begin
-                // fork the process to wait for the enable signal
-                @(posedge vinf.clk);
-                fork
-                    // wait for the enable signal
-                    begin
-                        #2ps;//wait for 3ns to make sure the signal is stable
-                        if(vinf.enable == 1 || vinf.reset == 1) begin // 
-                            next_is_valid = 1;
-                        end
-                        else begin
-                            next_is_valid = 0;
-                        end
+           
+            fork
+                begin
+                @(vinf.rd_data) begin
+                    tr_data.rd_data = vinf.rd_data;
+                    tr_data.is_data_valid = 1;
+                    mon_out_ap.write(tr_data);
                     end
-               
-                    begin
-                        if(next_is_valid) begin
-                            my_tran.rd_data = vinf.rd_data;
-                            my_tran.res_out = vinf.res_out;
-                            //send the transaction to the analysis port
-                            sum_of_trans_out++;
-                            mon_out_ap.write(my_tran);
-                        end
-                    end 
-                join;
-            end 
-        
+                end
+
+                begin 
+                    @(vinf.res_out) begin
+                        tr_res.res_out = vinf.res_out;
+                        tr_res.is_data_valid = 0;
+                    end
+                end
+            join_any
+            disable fork;
+            //send the transaction to the analysis port
+            sum_of_trans_out++;
+            end
     endtask
 
 endclass
