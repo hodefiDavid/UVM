@@ -29,8 +29,8 @@ class monitor_in extends uvm_monitor;
         my_tran = my_transaction::type_id::create("my_tran", this);
   
         forever begin 
-        
-            @(vinf.rd_wr or vinf.reset or vinf.addr or vinf.wr_data)
+
+            @(posedge vinf.clk);
             // for coverage
             cov.coverage_sample(my_tran);
 

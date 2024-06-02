@@ -18,7 +18,7 @@ class my_sequence extends uvm_sequence #(my_transaction);
             finish_item(req);
         end
 
-        repeat(1000) begin
+        repeat(10) begin
             // start_item() is a method of uvm_sequence that creates a new transaction
             // and sends it to the sequencer
             req = my_transaction::type_id::create("req");

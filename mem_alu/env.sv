@@ -21,7 +21,8 @@ class env extends uvm_env;
 	function void connect_phase(uvm_phase phase);
 		super.connect_phase(phase);
 		agnt_in.agnt_in_ap.connect(sb.scb_port_in);
-		agnt_out.agnt_ap_out.connect(sb.scb_port_out);
+		agnt_out.agnt_ap_out_data.connect(sb.scb_port_data_out);
+		agnt_out.agnt_ap_out_res.connect(sb.scb_port_res_out);
 	endfunction
 
 	

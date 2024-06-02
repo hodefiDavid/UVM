@@ -6,13 +6,13 @@ module top;
 	import uvm_pkg::*;
 	import my_pkg::*;
 	
-	bit clk, reset;
-	
+	bit  reset;
+	bit clk;
 	always #5 clk = ~clk;
 	
 	initial begin
 		reset = 1;
-		#5 reset = 0;
+		#5 reset = 0; //10
 	end
 	
 	// instantiate interface
