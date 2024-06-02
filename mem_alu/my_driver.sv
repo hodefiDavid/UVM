@@ -21,14 +21,11 @@ class my_driver extends uvm_driver#(my_transaction);
 		my_transaction trans = new();
 		forever begin
 			seq_item_port.get_next_item(trans);
-			@(posedge vinf.clk) begin	
-							
-			vinf.rd_wr <= trans.rd_wr;
-			vinf.addr <= trans.addr;
-			// vinf.enable <= trans.enable;
-			vinf.enable <= 1;
-			vinf.wr_data <= trans.wr_data;
-
+			@(posedge vinf.clk) begin				
+				vinf.addr <= trans.addr;
+				vinf.rd_wr <= trans.rd_wr;
+				vinf.wr_data <= trans.wr_data;
+				vinf.enable <= trans.enable;
 			seq_item_port.item_done();
 
 			end

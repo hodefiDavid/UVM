@@ -67,7 +67,6 @@ module memory
       else if (addr==3)
         mem[addr][0] <= wr_data;
     end
-    
   // Read data from memory
   always @(posedge clk)
     if ((rd_wr) & enable) rd_data <= mem[addr];

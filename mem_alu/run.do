@@ -1,7 +1,7 @@
 # clean the previous compiled files and quit previous simulation
 .main clear
 # recompile the files
-vlog memory.sv my_pkg.svh interface.sv top.sv
+vlog memory.sv my_pkg.sv interface.sv top.sv
 
 # start the simulation
 vopt +acc top -o opt_test

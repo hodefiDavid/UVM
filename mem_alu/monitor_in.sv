@@ -1,5 +1,3 @@
-	`include "my_coverage.sv"
-
 class monitor_in extends uvm_monitor;
     `uvm_component_utils (monitor_in)
 
@@ -8,15 +6,9 @@ class monitor_in extends uvm_monitor;
     virtual inf vinf;
     int sum_of_trans_in = 0;
     my_transaction my_tran;
-    
-    // for coverage porpeses
-    my_coverage cov;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
-        
-        //for coverage
-        cov = new();
     endfunction
 
     function void build_phase(uvm_phase phase);
@@ -27,25 +19,21 @@ class monitor_in extends uvm_monitor;
 
     task run_phase(uvm_phase phase);
         my_tran = my_transaction::type_id::create("my_tran", this);
-  
+
         forever begin 
-
+   
             @(posedge vinf.clk);
-            // for coverage
-            cov.coverage_sample(my_tran);
-
-            begin 
-                if(vinf.enable | vinf.reset) begin
-                    my_tran.reset <= vinf.reset;
-                    my_tran.rd_wr <= vinf.rd_wr;
-                    my_tran.enable <= vinf.enable;   
-                    my_tran.addr <= vinf.addr;
-                    my_tran.wr_data <= vinf.wr_data;
-                    mon_in_ap.write(my_tran);
-                    sum_of_trans_in++;
-                end
+               #1ps;
+             begin 
+               
+                my_tran.addr = vinf.addr;
+                my_tran.wr_data = vinf.wr_data;
+                my_tran.enable = vinf.enable;
+                my_tran.rd_wr = vinf.rd_wr;
+                
+                mon_in_ap.write(my_tran);
+                sum_of_trans_in++;
             end
         end
-
     endtask
 endclass
